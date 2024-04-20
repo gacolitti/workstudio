@@ -1,0 +1,16 @@
+proxy:
+  port: 8080
+  authentication: none
+  docker:
+      internal-networking: true
+  specs:
+  - id: rstudio
+    container-image: openanalytics/shinyproxy-rstudio-ide-demo:2023.06.0_421__4.3.1
+    container-volumes: [ "/tmp/#{proxy.userId}:/home/#{proxy.userId}" ]
+    container-env:
+      DISABLE_AUTH: true
+      # Use the following line when using ShinyProxy 2.6.0 or later
+      WWW_ROOT_PATH: "#{proxy.getRuntimeValue('SHINYPROXY_PUBLIC_PATH')}"
+      # Use the following line when using ShinyProxy 2.5.0
+      # WWW_ROOT_PATH: "#{proxySpec.containerSpecs[0].env.get('SHINYPROXY_PUBLIC_PATH')}"
+    port: 8787
