@@ -14,3 +14,4 @@ proxy:
       # Use the following line when using ShinyProxy 2.5.0
       # WWW_ROOT_PATH: "#{proxySpec.containerSpecs[0].env.get('SHINYPROXY_PUBLIC_PATH')}"
     port: 8787
+    container-network: "workstudio-net"

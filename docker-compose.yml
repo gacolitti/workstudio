@@ -2,15 +2,17 @@ version: '3.8'
 services:
   shinyproxy:
     container_name: shinyproxy
-    image: openanalytics/shinyproxy:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     volumes:
       - '/var/run/docker.sock:/var/run/docker.sock'
       - "./application.yml:/opt/shinyproxy/application.yml:z"
     networks: 
-      - sp-example-net
+      - workstudio-net
     ports:
-      - 80:8080
+      - 8888:8080
 networks: 
-  sp-example-net:
-    name: "sp-example-net"
+  workstudio-net:
+    name: "workstudio-net"
       
