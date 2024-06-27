@@ -1,7 +1,11 @@
-FROM openjdk:11
+FROM openjdk:17-jdk-slim
 LABEL product=shinyproxy
-RUN wget -P /opt/shinyproxy https://www.shinyproxy.io/downloads/shinyproxy-3.0.2.jar
+
+# Install wget
+RUN apt-get update && apt-get install -y wget && apt-get clean
+
+RUN wget -P /opt/shinyproxy https://www.shinyproxy.io/downloads/shinyproxy-3.1.0.jar
 COPY application.yml /opt/shinyproxy/application.yml
-RUN chmod +x /opt/shinyproxy/shinyproxy-3.0.2.jar
+RUN chmod +x /opt/shinyproxy/shinyproxy-3.1.0.jar
 WORKDIR /opt/shinyproxy/
-CMD ["java", "-jar", "shinyproxy-3.0.2.jar"]
+CMD ["java", "-jar", "shinyproxy-3.1.0.jar"]
