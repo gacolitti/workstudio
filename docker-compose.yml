@@ -11,6 +11,12 @@ services:
       - workstudio-net
     ports:
       - 8888:8080
+  rstudio:
+    container_name: rstudio
+    build:
+      context: rstudio
+      dockerfile: Dockerfile
+
 networks: 
   workstudio-net:
     name: "workstudio-net"

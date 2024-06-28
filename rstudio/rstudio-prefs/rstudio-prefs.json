@@ -1,0 +1,53 @@
+{
+    "jobs_tab_visibility": "shown",
+    "editor_theme": "Dracula",
+    "pdf_previewer": "none",
+    "posix_terminal_shell": "bash",
+    "restore_source_documents": false,
+    "save_workspace": "never",
+    "load_workspace": false,
+    "show_last_dot_value": true,
+    "restore_last_project": false,
+    "font_size_points": 11,
+    "panes": {
+        "quadrants": [
+            "Source",
+            "TabSet1",
+            "Console",
+            "TabSet2"
+        ],
+        "tabSet1": [
+            "Environment",
+            "History",
+            "Connections",
+            "Build",
+            "VCS",
+            "Tutorial",
+            "Presentation"
+        ],
+        "tabSet2": [
+            "Files",
+            "Plots",
+            "Packages",
+            "Help",
+            "Viewer",
+            "Presentations"
+        ],
+        "hiddenTabSet": [],
+        "console_left_on_top": false,
+        "console_right_on_top": true,
+        "additional_source_columns": 0
+    },
+    "default_project_location": "~/Documents/r/projects",
+    "custom_shell_command": "/usr/bin/git-shell",
+    "save_files_before_build": true,
+    "show_hidden_files": true,
+    "initial_working_directory": "~/Documents/r",
+    "shiny_viewer_type": "browser",
+    "source_with_echo": true,
+    "document_author": "Giovanni Colitti",
+    "margin_column": 100,
+    "show_diagnostics_r": false,
+    "rainbow_parentheses": true,
+    "insert_native_pipe_operator": true
+}

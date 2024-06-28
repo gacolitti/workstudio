@@ -5,8 +5,9 @@ proxy:
       internal-networking: true
   specs:
   - id: rstudio
-    container-image: openanalytics/shinyproxy-rstudio-ide-demo:2023.06.0_421__4.3.1
-    container-volumes: [ "/tmp/#{proxy.userId}:/home/#{proxy.userId}" ]
+    container-image: workstudio-rstudio
+    container-volumes:
+      - "/tmp/#{proxy.userId}:/home/#{proxy.userId}"
     container-env:
       DISABLE_AUTH: true
       # Use the following line when using ShinyProxy 2.6.0 or later

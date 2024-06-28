@@ -1,0 +1,497 @@
+
+snippet aa
+	${1:dataset} <- ${1:dataset} %>% ${0}
+
+
+# ------------------------------------------------------------
+# scripting
+# ------------------------------------------------------------
+
+snippet hb "exectuable script"
+	#!/usr/bin/env Rscript
+
+snippet lib
+	library(${1:package})
+
+snippet tdv
+	library(tidyverse)
+
+snippet tidyverse
+	library(ggplot2)
+	library(tibble)
+	library(tidyr)
+	library(readr)
+	library(purrr)
+	library(dplyr)
+	library(stringr)
+	library(forcats)
+	library(lubridate)
+	library(glue)
+	library(fs)
+
+snippet req
+	require(${1:package})
+
+snippet reqns
+	if (!requireNamespace("${1:pkg}", quietly = TRUE)) {
+	  stop("`${1:pkg}` is required: install.packages('${1:pkg}')")
+	}
+
+snippet ifreqns
+	if (requireNamespace("${1:pkg}", quietly = TRUE)) {
+	  ${2:code}
+	}
+
+snippet reqgh
+	if (!requireNamespace("${1:pkg}", quietly = TRUE)) {
+	  stop("`${1:pkg}` is required: devtools::install_github('${2:user}/${1:pkg}')")
+	}
+
+snippet knkt
+	%>%
+	knitr::kable()
+
+snippet docoptr
+	'usage:
+	  ${1:script.R} cmd [-f --arg=<msg>]
+	  ${1:script.R} -h | --help
+
+	options:
+	 -f           Flag
+	 --arg=<msg>  Argument with value
+	 -h --help    Show this screen' -> doc
+
+	library(docopt)
+	opts <- docopt(doc)
+
+snippet sg
+	setGeneric("${1:generic}", function(${2:x, ...}) {
+	  standardGeneric("${1:generic}")
+	})
+
+snippet sm
+	setMethod("${1:generic}", ${2:class}, function(${2:x, ...}) {
+	  ${0}
+	})
+
+snippet sc
+	setClass("${1:Class}", slots = c(${2:name = "type"}))
+
+snippet s3generic
+	${1:generic} <- function(x, ...) UseMethod("${1:generic}", x)
+
+	${1:generic}.${2:method} <- function(x, ...) {
+	  ${0}
+	}
+
+# ------------------------------------------------------------
+# operators
+# ------------------------------------------------------------
+
+snippet op:default
+	# use y if x is.null
+	`%||%` <- function(x, y) if (is.null(x)) y else x
+
+snippet op:notnull
+	# use y if x is not null (otherwise NULL)
+	`%??%` <- function(x, y) if (!is.null(x)) y
+
+snippet op:notnullish
+	# use y if x is not null(ish) (otherwise NULL)
+	`%??%` <- function(x, y) if (!is.null(x) && x != "") y
+
+# ------------------------------------------------------------
+# general
+# ------------------------------------------------------------
+
+snippet aa
+	${1:var} <- ${1:var} %>%
+	  ${0}
+
+snippet qq
+	${1:var} %>%
+	  ${0}
+
+snippet aq
+	${1:newvar} <- ${2:df} %>%
+	  ${0}
+
+snippet prettydate
+	strftime(Sys.time(), "%A, %b %d, %Y")
+
+snippet tts
+	strftime(Sys.time(), "${1:%F %T}")
+
+snippet hdr
+	# ---- ${1:header} ----
+
+snippet a=
+	${1:opt} = ${1:opt}
+
+snippet zz
+	${1:var} <- ${1:var} %||% ${0}
+
+snippet hh
+	here::here("${1:path}")
+
+snippet ie
+	if (${1:cond}) ${2:true} else ${3:false}
+	
+snippet lapply
+	lapply(${1:X}, function(x) {
+		${0}
+	})
+	
+snippet vapply
+	vapply(${1:X}, function(x) {
+		${0}	
+	})
+
+# ------------------------------------------------------------
+# ggplot2
+# ------------------------------------------------------------
+
+snippet ggplot
+	ggplot(${1:data}, aes(${2:aes})) + ${0}
+
+snippet ggplot_line
+	ggplot(${1:data}, aes(${2:x}, ${3:y})) + 
+		geom_line()${0}
+
+snippet ggplot_point
+	ggplot(${1:data}, aes(${2:x}, ${3:y})) + 
+		geom_point()${0}
+
+snippet ggsave
+	ggsave("${1:filename}.pdf", width = ${2:6}, height = ${3:6})${0}
+
+snippet geom
+	geom_${1:point}(${0})
+
+snippet ggeb "element_blank"
+	element_blank($0)
+
+snippet gger "element_rect"
+	element_rect($0)
+
+snippet gget "element_text"
+	element_text($0)
+
+snippet ggel "element_line"
+	element_line($0)
+
+# ------------------------------------------------------------
+# dplyr, purrr
+# ------------------------------------------------------------
+snippet br "bind_rows()"
+	bind_rows(${0})
+
+snippet bc "bind_cols()"
+	bind_cols(${0})
+
+snippet jo "*_join"
+	${1:inner}_join(${0})
+
+snippet pmd "purrr::map_dfr()"
+	purrr::map_dfr(${0})
+
+snippet pmdc "purrr::map_dfc()"
+	purrr::map_dfc(${0})
+
+snippet pm "purrr::map()"
+	purrr::map(${0})
+
+snippet pmc "purrr::map_chr()"
+	purrr::map_chr(${0})
+
+snippet pmi "purrr::map_int()"
+	purrr::map_int(${0})
+
+snippet pmb "purrr::map_lgl()"
+	purrr::map_lgl(${0})
+
+snippet pmdb "purrr::map_dbl()"
+	purrr::map_dbl(${0})
+
+# ------------------------------------------------------------
+# rlang
+# ------------------------------------------------------------
+snippet rlquo
+	${1:var} <- rlang::enquo(${1:var})
+	${1:var}_name <- rlang::quo_name(${1:var})
+
+# ------------------------------------------------------------
+# shiny
+# ------------------------------------------------------------
+	
+snippet observe_event
+	observeEvent( 
+		{
+			${1:event} 
+		}, 
+		{
+			${0}
+		}
+	)
+
+snippet module
+	mod_${1:name}_ui <- function(id) {
+	  ns <- NS(id)
+	  tagList(
+	    ${0}
+	  )
+	}
+
+	mod_${1:name}_server <- function(id) {
+		moduleServer(
+			id,
+			function(input, output, session) {
+		
+			}
+		)
+	}
+	
+	# Copy in UI
+	#mod_${1:name}_ui("mod_${1:name}_ui_1")
+	
+	# Copy in server
+	#mod_${1:name}_server(mod_${1:name}_server_1)
+
+snippet shinyexternal
+	options(shiny.launch.browser = .rs.invokeShinyWindowExternal)
+
+snippet shinywindow
+	options(shiny.launch.browser = .rs.invokeShinyWindowViewer)
+
+snippet shinypane
+	options(shiny.launch.browser = .rs.invokeShinyPaneViewer)
+
+snippet shinymsg
+	session\$sendCustomMessage("${1:handlerName}", ${2:data})
+
+snippet shinyinputmsg
+	session\$sendInputMessage("${1:inputId}", ${2:data})
+
+snippet shinyregisterInputHandler
+	shiny::registerInputHandler(
+	  type = "${1:input_type}",
+	  fun = function(value, session, inputName) {
+	    # value is the parsed JSON value returned by the input
+	    # transform it as needed and return the new value
+	    $0
+	  }
+	)
+
+snippet shinycss
+	includeCSS("$0")
+
+snippet shinyjs
+	includeScript("$0")
+	
+snippet with_progress
+	withProgress( 
+		message = "${1:message}", 
+		{
+			${0}
+		}
+	)
+	
+snippet shinyapp
+	library(shiny)
+
+	ui <- fluidPage(
+	  ${0}
+	)
+
+	server <- function(input, output, session) {
+
+	}
+
+	shinyApp(ui, server)
+	
+snippet shiny_sidebar_app
+	library(shiny)
+		
+	ui <- fluidPage(
+		
+		titlePanel("${1:title}"),
+		  
+		sidebarLayout(	
+		
+		  	sidebarPanel(
+		  	
+		    	${0}
+		    	
+		  	),
+		  	
+		  	mainPanel(
+		    
+		  	)
+		  	
+		)
+		
+	)
+		
+	server <- function(input, output, session) {
+		
+	}
+	
+	shinyApp(ui, server)
+	
+snippet shiny_navbar_app
+	library(shiny)
+	
+	ui <- navbarPage(
+	
+		title = "${1:title}",
+		
+			tabPanel(
+			
+				title = "${2:title}",
+				
+				${0}
+		)
+		
+	)
+	
+	server <- function(input, output, session) {
+		
+	}
+	
+	shinyApp(ui, server)
+	
+snippet shiny_navlist_app
+	library(shiny)
+	
+	ui <- fluidPage(
+		
+		titlePanel("${1:title}"),
+		
+		navlistPanel(
+			widths = c(2, 10),
+			tabPanel(
+				title = "${2:title}"
+				${0}
+			),
+			tabPanel(
+				title = "${3:title}"
+				
+			)
+		)
+	)
+	
+	server <- function(input, output) {
+		
+	}
+	
+	shinyApp(ui, server)
+	
+snippet shinydashboard_app
+	library(shiny)
+	library(shinydashboard)
+	
+	ui <- dashboardPage(
+		dashboardHeader(title = "${1:title}"),
+		dashboardSidebar(
+			sidebarMenu(id = "sidebar",
+				menuItem("Dashboard", tabName = "dashboard", icon = icon("dashboard"))
+			)
+		),
+		dashboardBody(
+			tabItems(
+				tabItem(
+					tabName = "dashboard",
+					${0}
+				)
+			)
+		)
+	)
+
+	server <- function(input, output) {
+		
+	}
+
+	shinyApp(ui, server)
+
+# ------------------------------------------------------------
+# htmltools
+# ------------------------------------------------------------
+snippet htmldep
+	htmltools::htmlDependency(
+	  name = "${1:name}",
+	  version = "${2:1.2.3}",
+	  package = "${3:pkg}",
+	  src = "${4:src}",
+	  script = "${5:script.js}",
+	  stylesheet = "${0:styles.css}",
+	  all_files = FALSE
+	)
+
+snippet htmltl
+	htmltools::tagList(
+	  $0
+	)
+
+## tags ----
+snippet thead
+	tags\$head($0)
+snippet tcss
+	tags\$link(href = "$0", rel = "stylesheet")
+snippet tstyle
+	tags\$style($0)
+snippet tscript
+	tags\$script($0)
+snippet tjs
+	tags\$script(src = "$0")
+snippet ta
+	tags\$a(href = "${1:url}", $0)
+snippet tbutton
+	tags\$button(type="button", title="${1:title}", $0)
+snippet tclass
+	class = "$0"
+snippet tid
+	id = "$0"
+snippet tdata
+	`data-${1:name}` = ${0}
+
+# ------------------------------------------------------------
+# testthat
+# ------------------------------------------------------------
+snippet ttht "Create test"
+	test_that("${1:description}", {
+	  $0
+	})
+
+snippet ttef "Expect false"
+	expect_false(${1:${VISUAL}})
+
+snippet ttet "Expect true"
+	expect_true(${1:${VISUAL}})
+
+snippet ttee "Expect equal"
+	expect_equal(${1:${VISUAL}}, $2)
+
+snippet ttdt "Describe that"
+	describe("${1:function}", {
+	  it("${2:action}", {
+	    $0
+	  })
+	})
+
+
+# ------------------------------------------------------------
+# learnr
+# ------------------------------------------------------------
+snippet lrnq
+	question("${1:question}",
+	  answer("${2:answer_1}", correct = TRUE),
+	  answer("${3:answer_2}"),
+	  allow_retry = TRUE,
+	  random_answer_order = TRUE
+	)
+
+snippet lrnqz
+	quiz(
+	  caption = "${1:caption}",
+	  $0
+	)
