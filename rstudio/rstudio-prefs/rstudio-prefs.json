@@ -38,11 +38,11 @@
         "console_right_on_top": true,
         "additional_source_columns": 0
     },
-    "default_project_location": "~/Documents/r/projects",
+    "default_project_location": "~/workstudio",
     "custom_shell_command": "/usr/bin/git-shell",
     "save_files_before_build": true,
     "show_hidden_files": true,
-    "initial_working_directory": "~/Documents/r",
+    "initial_working_directory": "~/workstudio",
     "shiny_viewer_type": "browser",
     "source_with_echo": true,
     "document_author": "Giovanni Colitti",

@@ -1,13 +1,17 @@
 proxy:
   port: 8080
+  default-max-instances: 10
+  stop-proxies-on-shutdown: false
+  recover-running-proxies: true
+  recover-running-proxies-from-different-config: true
   authentication: none
   docker:
       internal-networking: true
   specs:
-  - id: rstudio
+  - id: RStudio
     container-image: workstudio-rstudio
     container-volumes:
-      - "/tmp/#{proxy.userId}:/home/#{proxy.userId}"
+      - "workstudio:/home/rstudio/workstudio:z"
     container-env:
       DISABLE_AUTH: true
       # Use the following line when using ShinyProxy 2.6.0 or later
