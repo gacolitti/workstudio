@@ -11,7 +11,9 @@ proxy:
   - id: RStudio
     container-image: workstudio-rstudio
     container-volumes:
-      - "workstudio:/home/rstudio/workstudio:z"
+      - "workstudio:/home/rstudio/workstudio"
+      - "workstudio_r_libraries:/usr/local/lib/R/site-library"
+      - "workstudio_renv_cache:/home/rstudio/renv/cache"
     container-env:
       DISABLE_AUTH: true
       # Use the following line when using ShinyProxy 2.6.0 or later

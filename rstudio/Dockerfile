@@ -1,5 +1,8 @@
 FROM openanalytics/shinyproxy-rstudio-ide-demo:2023.06.0_421__4.3.1
 
+# Essential vars
+ENV RENV_PATHS_CACHE=/home/rstudio/renv/cache
+
 # Update and install all required packages in one layer
 RUN apt-get update && \
     apt-get install -y \
@@ -25,8 +28,9 @@ RUN apt-get update && \
 RUN mkdir -p /etc/rstudio
 COPY rstudio-prefs /etc/rstudio
 
-# Add working directory and change permissions
-RUN mkdir -p /home/rstudio/workstudio
-RUN chmod -R a+rwx /home/rstudio/workstudio
+# Create necessary directories and set permissions
+RUN mkdir -p /home/rstudio/workstudio \
+    && mkdir -p /home/rstudio/renv/cache \
+    && chmod -R a+rwx /home/rstudio 
 
 RUN echo "session-timeout-minutes=0" >> /etc/rstudio/rsession.conf
