@@ -5,10 +5,13 @@ proxy:
   recover-running-proxies: true
   recover-running-proxies-from-different-config: true
   authentication: none
+  template-path: ./templates/2col
   docker:
       internal-networking: true
   specs:
-  - id: RStudio
+  - id: rstudio
+    logo-url: /assets/img/rstudio.png
+    display-name: RStudio
     container-image: workstudio-rstudio
     container-volumes:
       - "workstudio:/home/rstudio/workstudio"
