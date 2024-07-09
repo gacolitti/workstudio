@@ -17,6 +17,11 @@ services:
     build:
       context: rstudio
       dockerfile: Dockerfile
+  vscode:
+    container_name: vscode
+    build:
+      context: vscode
+      dockerfile: Dockerfile
 
 networks: 
   workstudio-net:

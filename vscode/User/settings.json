@@ -1,0 +1,41 @@
+{
+    "files.associations": {
+        "*.rmd": "markdown"
+    },
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "explorer.confirmDelete": false,
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "python.terminal.activateEnvironment": false,
+    "redhat.telemetry.enabled": false,
+    "diffEditor.renderSideBySide": false,
+    "diffEditor.hideUnchangedRegions.enabled": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "workbench.activityBar.location": "top",
+    // Liveshare: Prompt when receiving focus requests
+    "liveshare.focusBehavior": "prompt",
+    // R: Treat`names.like.this` as one word for selection
+    "[r]": {
+    "editor.wordSeparators": "`~!@#%$^&*()-=+[{]}\\|;:'\",<>/?"
+    },
+    // R: Use active terminal for all commands
+    "r.alwaysUseActiveTerminal": true,
+    // R: Use bracketed paste mode when sending code to console (radian)
+    "r.bracketedPaste": true,
+    // R: R or radian path for macOS
+    "r.rterm.mac": "/opt/homebrew/Caskroom/miniforge/base/envs/r-console/bin/radian",
+    // R: Enable R session watcher (experimental)
+    "r.sessionWatcher": true,
+    // R: Remove hidden items when clearing R workspace
+    "r.workspaceViewer.removeHiddenItems": true,
+    // Telemetry: Disable Microsoft crash reporter
+    "telemetry.enableCrashReporter": false,
+    // Telemetry: Disable Microsoft telemetry
+    "telemetry.enableTelemetry": false,
+    // Terminal: Path to integrated shell on macOS
+    "terminal.integrated.shell.osx": "/bin/zsh",
+    "r.rpath.mac": "/opt/homebrew/bin/R",
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "workbench.colorTheme": "Default Dark Modern"
+}
