@@ -1,0 +1,86 @@
+/**
+ * ShinyProxy
+ *
+ * Copyright (C) 2016-2018 Open Analytics
+ *
+ * ===========================================================================
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the Apache License as published by
+ * The Apache Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * Apache License for more details.
+ *
+ * You should have received a copy of the Apache License
+ * along with this program.  If not, see <http://www.apache.org/licenses/>
+ */
+html {
+  min-height:100%;
+}
+
+body {
+  background-color: #333;
+  background-image: url("/assets/img/gradient-color-background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: top center;
+  color: rgb(202, 202, 202);
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.portfolio-item {
+  margin-bottom: 0px;
+  height: 500px;
+  text-align: center;
+}
+
+.navbar {
+	background-color: #222222;
+	border-color: 1px solid #222222;
+}
+
+footer {
+  margin: 50px 0;
+}
+
+.img-responsive {
+	max-height: 300px;
+}
+.image-box {
+	min-height: 300px;
+}
+.card-box {
+  margin-bottom: 0px;
+	background-clip: border-box;
+	border: 1px solid rgba(0,0,0,.125);
+	border-radius: 2.5rem;
+	padding: 15px;
+	min-height: 400px;
+	box-shadow:  1px 1px 5px 1px grey;
+	background-color: rgba(255, 255, 255, 0.3);
+	margin-top:10px;
+}
+
+.row {
+	margin: 0px;
+}
+
+h3 {
+	margin: 10px;
+}
+
+h3 a {
+  color: #FFFFFF; /* App display name color */
+  text-decoration: none; /* Remove underline from links */
+}
+
+h3 a:hover {
+  color: #CCCCCC; /* Change color on hover */
+}
