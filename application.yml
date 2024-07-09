@@ -1,5 +1,5 @@
 proxy:
-  title: "Workstudio"
+  title: "WorkStudio"
   port: 8080
   default-max-instances: 10
   stop-proxies-on-shutdown: false
