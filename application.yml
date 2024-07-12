@@ -29,6 +29,9 @@ proxy:
       # WWW_ROOT_PATH: "#{proxySpec.containerSpecs[0].env.get('SHINYPROXY_PUBLIC_PATH')}"
     port: 8787
     container-network: "workstudio-net"
+    heartbeat-timeout: -1
+    stop-on-logout: false
+    max-lifetime: -1
   - id: vscode
     display-name: VS Code
     logo-url: /assets/img/vscode.png
@@ -41,3 +44,6 @@ proxy:
       WWW_ROOT_PATH: "#{proxy.getRuntimeValue('SHINYPROXY_PUBLIC_PATH')}"
     port: 8090
     container-network: "workstudio-net"
+    heartbeat-timeout: -1
+    stop-on-logout: false
+    max-lifetime: -1
