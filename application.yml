@@ -2,17 +2,20 @@ proxy:
   title: "WorkStudio"
   port: 8080
   default-max-instances: 10
-  stop-proxies-on-shutdown: false
+  stop-proxies-on-shutdown: true
   recover-running-proxies: true
   recover-running-proxies-from-different-config: true
   authentication: none
   template-path: ./templates/2col
+  logo-url: file:///opt/shinyproxy/templates/workstudio-logo.png
+  favicon-path: /opt/shinyproxy/templates/workstudio-logo.png # not working
   docker:
       internal-networking: true
   specs:
   - id: rstudio
-    logo-url: /assets/img/rstudio.png
     display-name: RStudio
+    logo-url: /assets/img/rstudio.png
+    favicon-path: /opt/shinyproxy/templates/rstudio-logo.png
     container-image: workstudio-rstudio
     container-volumes:
       - "workstudio_rstudio:/home/rstudio/workstudio"
@@ -27,8 +30,9 @@ proxy:
     port: 8787
     container-network: "workstudio-net"
   - id: vscode
-    logo-url: /assets/img/vscode.png
     display-name: VS Code
+    logo-url: /assets/img/vscode.png
+    favicon-path: /opt/shinyproxy/templates/vscode-logo.png
     container-image: workstudio-vscode
     container-volumes:
       - "workstudio_vscode_settings:/root/.local/share/code-server/User"
