@@ -1,12 +1,26 @@
 proxy:
+  title: "WorkStudio"
   port: 8080
+  default-max-instances: 10
+  stop-proxies-on-shutdown: true
+  recover-running-proxies: true
+  recover-running-proxies-from-different-config: true
   authentication: none
+  template-path: ./templates/2col
+  logo-url: file:///opt/shinyproxy/templates/workstudio-logo.png
+  favicon-path: /opt/shinyproxy/templates/workstudio-logo.png # not working
   docker:
       internal-networking: true
   specs:
   - id: rstudio
-    container-image: openanalytics/shinyproxy-rstudio-ide-demo:2023.06.0_421__4.3.1
-    container-volumes: [ "/tmp/#{proxy.userId}:/home/#{proxy.userId}" ]
+    display-name: RStudio
+    logo-url: /assets/img/rstudio.png
+    favicon-path: /opt/shinyproxy/templates/rstudio-logo.png
+    container-image: workstudio-rstudio
+    container-volumes:
+      - "workstudio_rstudio:/home/rstudio/workstudio"
+      - "workstudio_r_libraries:/usr/local/lib/R/site-library"
+      - "workstudio_renv_cache:/home/rstudio/renv/cache"
     container-env:
       DISABLE_AUTH: true
       # Use the following line when using ShinyProxy 2.6.0 or later
@@ -15,3 +29,24 @@ proxy:
       # WWW_ROOT_PATH: "#{proxySpec.containerSpecs[0].env.get('SHINYPROXY_PUBLIC_PATH')}"
     port: 8787
     container-network: "workstudio-net"
+    heartbeat-timeout: -1
+    stop-on-logout: false
+    max-lifetime: -1
+  - id: vscode
+    display-name: VS Code
+    logo-url: /assets/img/vscode.png
+    favicon-path: /opt/shinyproxy/templates/vscode-logo.png
+    container-image: workstudio-vscode
+    container-volumes:
+      - "workstudio_vscode:/home/vscode/workstudio"
+      - "workstudio_vscode_settings:/root/.local/share/code-server/User"
+      - "workstudio_r_libraries:/usr/local/lib/R/site-library"
+      - "workstudio_renv_cache:/home/vscode/renv/cache"
+    container-env:
+      DISABLE_AUTH: true
+      WWW_ROOT_PATH: "#{proxy.getRuntimeValue('SHINYPROXY_PUBLIC_PATH')}"
+    port: 8090
+    container-network: "workstudio-net"
+    heartbeat-timeout: -1
+    stop-on-logout: false
+    max-lifetime: -1

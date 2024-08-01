@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   shinyproxy:
     container_name: shinyproxy
@@ -8,10 +7,22 @@ services:
     volumes:
       - '/var/run/docker.sock:/var/run/docker.sock'
       - "./application.yml:/opt/shinyproxy/application.yml:z"
+      - "./templates:/opt/shinyproxy/templates"
     networks: 
       - workstudio-net
     ports:
       - 8888:8080
+  rstudio:
+    container_name: rstudio
+    build:
+      context: rstudio
+      dockerfile: Dockerfile
+  vscode:
+    container_name: vscode
+    build:
+      context: vscode
+      dockerfile: Dockerfile
+
 networks: 
   workstudio-net:
     name: "workstudio-net"

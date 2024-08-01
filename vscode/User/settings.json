@@ -1,0 +1,52 @@
+{
+    // File associations: Treat .rmd files as markdown
+    "files.associations": {
+        "*.rmd": "markdown"
+    },
+    // Terminal: Disable multi-line paste warning
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    // Explorer: Disable delete confirmation
+    "explorer.confirmDelete": false,
+    // Python: Enable format on type
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    // Python: Do not activate environment in terminal
+    "python.terminal.activateEnvironment": false,
+    // RedHat: Disable telemetry
+    "redhat.telemetry.enabled": false,
+    // Diff Editor: Render side-by-side view
+    "diffEditor.renderSideBySide": false,
+    // Diff Editor: Hide unchanged regions
+    "diffEditor.hideUnchangedRegions.enabled": true,
+    // Diff Editor: Do not ignore trim whitespace
+    "diffEditor.ignoreTrimWhitespace": false,
+    // Workbench: Set activity bar location to top
+    "workbench.activityBar.location": "top",
+    // Liveshare: Prompt when receiving focus requests
+    "liveshare.focusBehavior": "prompt",
+    // R: Treat`names.like.this` as one word for selection
+    "[r]": {
+        "editor.wordSeparators": "`~!@#%$^&*()-=+[{]}\\|;:'\",<>/?"
+    },
+    // R: Use active terminal for all commands
+    "r.alwaysUseActiveTerminal": true,
+    // R: Use bracketed paste mode when sending code to console (radian)
+    "r.bracketedPaste": true,
+    // R: Enable R session watcher (experimental)
+    "r.sessionWatcher": true,
+    // R: Remove hidden items when clearing R workspace
+    "r.workspaceViewer.removeHiddenItems": true,
+    // Telemetry: Disable Microsoft crash reporter
+    "telemetry.enableCrashReporter": false,
+    // Telemetry: Disable Microsoft telemetry
+    "telemetry.enableTelemetry": false,
+    // Open specified folder by default
+    "files.autoOpenFolder": "/home/vscode/workstudio",
+    // Theme setting: Set color theme to Default Dark Modern
+    "workbench.colorTheme": "Default Dark Modern",
+    // Disable Welcome Page on startup
+    "workbench.startupEditor": "none",
+     // Open Explorer and Terminal on startup
+    "terminal.integrated.cwd": "/home/vscode/workstudio"
+}
