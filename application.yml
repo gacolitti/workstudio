@@ -38,7 +38,10 @@ proxy:
     favicon-path: /opt/shinyproxy/templates/vscode-logo.png
     container-image: workstudio-vscode
     container-volumes:
+      - "workstudio_vscode:/home/vscode/workstudio"
       - "workstudio_vscode_settings:/root/.local/share/code-server/User"
+      - "workstudio_r_libraries:/usr/local/lib/R/site-library"
+      - "workstudio_renv_cache:/home/vscode/renv/cache"
     container-env:
       DISABLE_AUTH: true
       WWW_ROOT_PATH: "#{proxy.getRuntimeValue('SHINYPROXY_PUBLIC_PATH')}"
