@@ -51,6 +51,20 @@ COPY rstudio-prefs /etc/rstudio
 # Create necessary directories and set permissions
 RUN mkdir -p /home/rstudio/workstudio \
     && mkdir -p /home/rstudio/renv/cache \
-    && chmod -R a+rwx /home/rstudio 
+    && mkdir -p /home/rstudio/.ssh \
+    && chmod -R a+rwx /home/rstudio/workstudio 
+
+# Ensure the .ssh directory has the correct permissions
+RUN chown -R rstudio:rstudio /home/rstudio/.ssh \
+    && chmod 700 /home/rstudio/.ssh
+
+# Generate an SSH key with the correct user and set permissions
+USER rstudio
+RUN ssh-keygen -t rsa -b 4096 -C "workstudio_rstudio" -f /home/rstudio/.ssh/id_rsa \
+    && chmod 600 /home/rstudio/.ssh/id_rsa \
+    && chmod 644 /home/rstudio/.ssh/id_rsa.pub
+    
+# Switch back to root if necessary for other setup
+USER root
 
 RUN echo "session-timeout-minutes=0" >> /etc/rstudio/rsession.conf
