@@ -1,6 +1,7 @@
 services:
   shinyproxy:
     container_name: shinyproxy
+    image: workstudio-shinyproxy
     build:
       context: .
       dockerfile: Dockerfile
@@ -14,11 +15,13 @@ services:
       - 8888:8080
   rstudio:
     container_name: rstudio
+    image: workstudio-rstudio
     build:
       context: rstudio
       dockerfile: Dockerfile
   vscode:
     container_name: vscode
+    image: workstudio-vscode
     build:
       context: vscode
       dockerfile: Dockerfile
