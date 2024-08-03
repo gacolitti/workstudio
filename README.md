@@ -1,44 +1,51 @@
 
-# WorkStudio
+# WorkStudio <a href="github.com/gacolitti/workstudio"><img src="templates/workstudio-logo.png" align="right" height="50" /></a>
+
+<!-- badges: start -->
+[![experimental](https://img.shields.io/badge/experimental-orange.svg)](https://github.com/gacolitti/workstudio)
+<!-- badges: end -->
 
 ## Introduction
 
-WorkStudio is a containerized development environment built on ShinyProxy, designed to support both
-RStudio and VS Code IDEs. The goal of WorkStudio is to provide a seamless, flexible, and powerful
-environment for data analysis and software development. With WorkStudio, you can run multiple
-instances of both IDEs directly in your browser, whether on a server or locally.
+WorkStudio is a containerized development environment built on
+ShinyProxy, designed to support both RStudio and VS Code IDEs. The goal
+of WorkStudio is to provide a seamless, flexible, and powerful
+environment for data analysis and software development. With WorkStudio,
+you can run multiple instances of both IDEs directly in your browser,
+whether on a server or locally.
+
+[![WorkStudio Usage](templates/workstudio-in-browser.png)](https://www.youtube.com/watch?v=KXwxoSq4kH4)
 
 ## Key Features
 
-- **Multiple Instances:** Run multiple instances of RStudio and VS Code in your browser.
-- **Persistent Work Environment:** Docker containers are configured to never expire, ensuring 
-  your work is always saved right where you left off.
-- **Preinstalled R Packages:** Commonly used R packages come preinstalled, saving you setup time.
-- **Customizable Preferences:** User preferences are set and easily customizable to fit your workflow.
-- **Docker Volumes:** Work is persisted in Docker volumes, ensuring data integrity and easy access.
-- **Flexible Deployment:** Can be deployed both locally and on a server for greater flexibility.
-- **SSH Keys:** SSH keys are created in the docker image so you just need to
-  copy and paste the public key into GitHub to start cloning your repos.
+- **Multiple Instances:** Run multiple instances of RStudio and VS Code
+  in your browser.
+- **Persistent Work Environment:** Docker containers are configured to
+  never expire, ensuring your work is always saved right where you left
+  off.
+- **Preinstalled R Packages:** Commonly used R packages come
+  preinstalled, saving you setup time.
+- **Customizable Preferences:** User preferences are set and easily
+  customizable to fit your workflow.
+- **Docker Volumes:** Work is persisted in Docker volumes, ensuring data
+  integrity and easy access.
+- **Flexible Deployment:** Can be deployed both locally and on a server
+  for greater flexibility.
+- **SSH Keys:** SSH keys are created in the docker image so you just
+  need to copy and paste the public key into GitHub to start cloning
+  your repos.
 
 ## Project Structure
 
-```
-workstudio/
-│
-├── .Rhistory              # R history file
-├── .DS_Store              # macOS file system metadata
-├── Dockerfile             # Dockerfile for building the ShinyProxy environment
-├── rstudio/               # RStudio project directory
-├── workstudio.Rproj       # RStudio project file
-├── .gitignore             # Git ignore file
-├── templates/             # Templates for various project files
-├── docker-compose.yml     # Docker Compose configuration
-├── application.yml        # Application configuration file for ShinyProxy
-├── .git/                  # Git repository metadata
-├── vscode/                # VS Code configuration directory
-├── clean-run.sh           # Shell script for running the project from a clean slate
-└── .Rproj.user            # RStudio project-specific settings
-```
+    workstudio/
+    │
+    ├── Dockerfile             # Dockerfile for building the ShinyProxy environment
+    ├── rstudio/               # RStudio server configuration directory
+    ├── templates/             # Templates and logos used by ShinyProxy
+    ├── docker-compose.yml     # Docker Compose configuration 
+    ├── application.yml        # Application configuration file for ShinyProxy
+    ├── vscode/                # VS Code configuration directory
+    ├── clean-run.sh           # Shell script for running the project from a clean slate
 
 ## Getting Started
 
@@ -49,21 +56,24 @@ workstudio/
 
 ### Installation
 
-1. **Clone the repository:**
-   ```sh
-   git clone https://github.com/gacolitti/workstudio.git
-   cd workstudio
-   ```
+1.  **Clone the repository:**
 
-2. **Build the Docker images:**
-   ```sh
-   docker-compose build
-   ```
+    ``` sh
+    git clone https://github.com/gacolitti/workstudio.git
+    cd workstudio
+    ```
 
-3. **Start the containers:**
-   ```sh
-   docker-compose up
-   ```
+2.  **Build the Docker images:**
+
+    ``` sh
+    docker-compose build
+    ```
+
+3.  **Start the containers:**
+
+    ``` sh
+    docker-compose up
+    ```
 
 ### Usage
 
@@ -77,7 +87,7 @@ workstudio/
 
 The main Dockerfile is set up to create a ShinyProxy environment:
 
-```Dockerfile
+``` dockerfile
 FROM openjdk:17-jdk-slim
 LABEL product=shinyproxy
 
@@ -94,9 +104,10 @@ CMD ["java", "-jar", "shinyproxy.jar"]
 
 #### docker-compose.yml
 
-The Docker Compose configuration sets up services for ShinyProxy, RStudio, and VS Code:
+The Docker Compose configuration sets up services for ShinyProxy,
+RStudio, and VS Code:
 
-```yaml
+``` yaml
 services:
   shinyproxy:
     container_name: shinyproxy
@@ -129,10 +140,11 @@ networks:
 
 #### application.yml
 
-The application.yml file configures ShinyProxy to manage multiple instances of RStudio and VS Code
-and necessary docker volumes for persistent storage:
+The application.yml file configures ShinyProxy to manage multiple
+instances of RStudio and VS Code and necessary docker volumes for
+persistent storage:
 
-```yaml
+``` yaml
 proxy:
   title: "WorkStudio"
   port: 8080
@@ -186,8 +198,10 @@ proxy:
 
 ## Contributing
 
-Contributions are welcome! Please fork the repository and create a pull request with your changes.
+Contributions are welcome! Please fork the repository and create a pull
+request with your changes.
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for more details.
+This project is licensed under the MIT License. See the LICENSE file for
+more details.
