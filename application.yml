@@ -50,3 +50,7 @@ proxy:
     heartbeat-timeout: -1
     stop-on-logout: false
     max-lifetime: -1
+    
+server:
+  servlet.session.timeout: 0
+  forward-headers-strategy: native
