@@ -59,8 +59,12 @@ RUN mkdir -p /home/vscode/workstudio \
     
 WORKDIR /home/vscode/workstudio
 
+# Copy the script to start SSH agent and add keys
+COPY run.sh /usr/local/bin/run.sh
+RUN chmod +x /usr/local/bin/run.sh
+
 # Set up entrypoint
-ENTRYPOINT ["code-server", "--bind-addr", "0.0.0.0:8090", "--auth", "none"]
+ENTRYPOINT ["/usr/local/bin/run.sh"]
 
 # Expose the port
 EXPOSE 8090
