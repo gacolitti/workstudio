@@ -13,7 +13,7 @@ services:
     networks: 
       - workstudio-net
     ports:
-      - 8888:8080
+      - ${WORKSTUDIO_PORT}:8080
     profiles:
       - default
     env_file:

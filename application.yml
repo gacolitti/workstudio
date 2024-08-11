@@ -1,7 +1,7 @@
 proxy:
   title: "${WORKSTUDIO_TITLE}"
-  port: 8080
-  default-max-instances: 10
+  port: 8090
+  default-max-instances: "${DEFAULT_MAX_INSTANCES}"
   stop-proxies-on-shutdown: true
   recover-running-proxies: true
   recover-running-proxies-from-different-config: true
