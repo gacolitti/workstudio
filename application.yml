@@ -54,3 +54,7 @@ proxy:
 server:
   servlet.session.timeout: 0
   forward-headers-strategy: native
+
+logging:
+  file:
+    name: /etc/shinyproxy/shinyproxy.log
