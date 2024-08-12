@@ -1,6 +1,6 @@
 proxy:
   title: "${WORKSTUDIO_TITLE}"
-  port: 8090
+  port: 8080
   default-max-instances: "${DEFAULT_MAX_INSTANCES}"
   stop-proxies-on-shutdown: true
   recover-running-proxies: true
@@ -22,6 +22,7 @@ proxy:
       - "workstudio_r_libraries:/usr/local/lib/R/site-library"
       - "workstudio_renv_cache:/home/rstudio/renv/cache"
       - "${SSH_FOLDER_PATH}:/home/rstudio/.ssh:ro" 
+      - "workstudio_tinytex:/home/rstudio/.TinyTeX"
     container-env:
       DISABLE_AUTH: true
       # Use the following line when using ShinyProxy 2.6.0 or later

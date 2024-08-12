@@ -19,9 +19,16 @@ services:
   # These images are built but will not create containers using docker-compose up by default
   rstudio:
     image: workstudio-rstudio
+    platform: linux/amd64
     build:
       context: rstudio
       dockerfile: Dockerfile
+      args:
+        INCLUDE_TIDYVERSE: ${INCLUDE_TIDYVERSE}
+        INCLUDE_JUPYTER: ${INCLUDE_JUPYTER}
+        INCLUDE_GEOSPATIAL: ${INCLUDE_GEOSPATIAL}
+        TINYTEX_VERSION: ${TINYTEX_VERSION}
+        RSTUDIO_ROCKER_IMAGE_VERSION: ${RSTUDIO_ROCKER_IMAGE_VERSION}
     scale: 0
   vscode:
     image: workstudio-vscode
