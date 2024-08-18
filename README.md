@@ -11,8 +11,7 @@ WorkStudio is a containerized development environment built on
 ShinyProxy, designed to support both RStudio and VS Code IDEs. The goal
 of WorkStudio is to provide a seamless, flexible, and powerful
 environment for data analysis and software development. With WorkStudio,
-you can run multiple instances of both IDEs directly in your browser,
-whether on a server or locally.
+you can run multiple instances of both IDEs directly in your browser.
 
 [![WorkStudio Usage](templates/workstudio-in-browser.png)](https://www.youtube.com/watch?v=KXwxoSq4kH4)
 
@@ -29,11 +28,6 @@ whether on a server or locally.
   customizable to fit your workflow.
 - **Docker Volumes:** Work is persisted in Docker volumes, ensuring data
   integrity and easy access.
-- **Flexible Deployment:** Can be deployed both locally and on a server
-  for greater flexibility.
-- **SSH Keys:** SSH keys are created in the docker image so you just
-  need to copy and paste the public key into GitHub to start cloning
-  your repos.
 
 ## Project Structure
 
@@ -46,6 +40,7 @@ whether on a server or locally.
     ├── application.yml        # Application configuration file for ShinyProxy
     ├── vscode/                # VS Code configuration directory
     ├── clean-run.sh           # Shell script for running the project from a clean slate
+    ├── .env                   # Environment variables to be configured by the user before build
 
 ## Getting Started
 

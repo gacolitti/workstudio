@@ -9,22 +9,33 @@ services:
       - '/var/run/docker.sock:/var/run/docker.sock'
       - "./application.yml:/opt/shinyproxy/application.yml:z"
       - "./templates:/opt/shinyproxy/templates"
+      - '${SSH_FOLDER_PATH}:/opt/shinyproxy/.ssh'  # Mount the .ssh folder
     networks: 
       - workstudio-net
     ports:
-      - 8888:8080
+      - ${WORKSTUDIO_PORT}:8080
+    env_file:
+      .env
+  # These images are built but will not create containers using docker-compose up by default
   rstudio:
-    container_name: rstudio
     image: workstudio-rstudio
+    platform: linux/amd64
     build:
       context: rstudio
       dockerfile: Dockerfile
+      args:
+        INCLUDE_TIDYVERSE: ${INCLUDE_TIDYVERSE}
+        INCLUDE_JUPYTER: ${INCLUDE_JUPYTER}
+        INCLUDE_GEOSPATIAL: ${INCLUDE_GEOSPATIAL}
+        TINYTEX_VERSION: ${TINYTEX_VERSION}
+        RSTUDIO_ROCKER_IMAGE_VERSION: ${RSTUDIO_ROCKER_IMAGE_VERSION}
+    scale: 0
   vscode:
-    container_name: vscode
     image: workstudio-vscode
     build:
       context: vscode
       dockerfile: Dockerfile
+    scale: 0
 
 networks: 
   workstudio-net:

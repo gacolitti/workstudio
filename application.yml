@@ -1,7 +1,7 @@
 proxy:
-  title: "WorkStudio"
+  title: "${WORKSTUDIO_TITLE}"
   port: 8080
-  default-max-instances: 10
+  default-max-instances: "${DEFAULT_MAX_INSTANCES}"
   stop-proxies-on-shutdown: true
   recover-running-proxies: true
   recover-running-proxies-from-different-config: true
@@ -21,6 +21,8 @@ proxy:
       - "workstudio_rstudio:/home/rstudio/workstudio"
       - "workstudio_r_libraries:/usr/local/lib/R/site-library"
       - "workstudio_renv_cache:/home/rstudio/renv/cache"
+      - "${SSH_FOLDER_PATH}:/home/rstudio/.ssh:ro" 
+      - "workstudio_tinytex:/home/rstudio/.TinyTeX"
     container-env:
       DISABLE_AUTH: true
       # Use the following line when using ShinyProxy 2.6.0 or later
@@ -42,6 +44,7 @@ proxy:
       - "workstudio_vscode_settings:/root/.local/share/code-server/User"
       - "workstudio_r_libraries:/usr/local/lib/R/site-library"
       - "workstudio_renv_cache:/home/vscode/renv/cache"
+      - "${SSH_FOLDER_PATH}:/root/.ssh:ro" 
     container-env:
       DISABLE_AUTH: true
       WWW_ROOT_PATH: "#{proxy.getRuntimeValue('SHINYPROXY_PUBLIC_PATH')}"
@@ -50,3 +53,11 @@ proxy:
     heartbeat-timeout: -1
     stop-on-logout: false
     max-lifetime: -1
+    
+server:
+  servlet.session.timeout: 0
+  forward-headers-strategy: native
+
+logging:
+  file:
+    name: /etc/shinyproxy/shinyproxy.log

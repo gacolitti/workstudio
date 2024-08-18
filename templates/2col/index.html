@@ -42,7 +42,7 @@
     </head>
     <body>
         <!-- navigation bar -->
-        <div th:replace="fragments/navbar :: navbar"></div>
+        <div th:replace="~{fragments/navbar :: navbar}"></div>
 
         <div class="container" id="applist">
             <div class="row">
@@ -83,7 +83,7 @@
             </div>
         </div>
 
-        <div th:replace="fragments/modal :: modal"></div>
+        <div th:replace="~{fragments/modal :: modal}"></div>
 
         <script type="text/javascript" th:inline="javascript">
             $(window).on('load', function () {

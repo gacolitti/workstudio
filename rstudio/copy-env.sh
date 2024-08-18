@@ -1,3 +1,3 @@
 #!/usr/bin/with-contenv bash
 
-printenv >> /home/$USER/.Renviron
+printenv >> /home/$DEFAULT_USER/.Renviron
