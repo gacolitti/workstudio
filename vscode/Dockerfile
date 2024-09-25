@@ -14,6 +14,7 @@ RUN apt-get update && \
     postgresql-contrib \
     odbc-postgresql \
     libpq-dev \
+    libcurl4-openssl-dev \
     libssl-dev \
     libpq5 \
     pkg-config \
