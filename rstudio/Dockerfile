@@ -37,6 +37,7 @@ RUN apt-get update && \
     odbc-postgresql \
     libpq-dev \
     libssl-dev \
+    libcurl4-openssl-dev \
     libpq5 \
     pkg-config \
     zlib1g-dev \ 
